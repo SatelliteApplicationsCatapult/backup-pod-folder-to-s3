@@ -59,7 +59,7 @@ do
     else
         ${DEBUG} aws --endpoint-url=${AWS_ENDPOINT_URL} s3 cp ${backup_file} s3://${AWS_DESTINATION_BUCKET}
     fi
-    ${DEBUG} rm -rf /tmp/*${BACKUP_NAME_TEMPLATE}*.tgz
+    ${DEBUG} rm -rf ${backup_file}
 done
 
 IFS=$OIFS
