@@ -15,7 +15,7 @@ fi
 
 if [ -z ${BACKUP_FOLDER+x} ]; then
     echo "BACKUP_FOLDER variable is not set"
-    echo "Set it to the folder to backup from within each selected pod"
+    echo "Set it to the folder to backup within the selected pod"
     exit 1
 fi
 
