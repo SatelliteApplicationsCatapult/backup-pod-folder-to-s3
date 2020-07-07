@@ -43,7 +43,7 @@ if [ -z ${AWS_SECRET_ACCESS_KEY+x} ]; then
     exit 1
 fi
 
-
+# Environment looks fine, we are good to go
 OIFS=$IFS
 IFS=','
 for ns in ${NAMESPACES}
