@@ -2,8 +2,8 @@
 
 Docker image to backup a folder within a Kubernetes Pod to an S3 bucket.
 
-The backup method implemented in this repo uses `tar` to backup a folder that is mounted in a user *Pod* by means of issuing `kubectl exec` within an ephemeral *Pod* that is deployed as part of a *CronJob*. It is specifically recommended to backup a *Persistent Volume* that cannot be mounted *ReadWriteMany* due to limitations with the *Storage Class* or Provider in use.
-If you're not limited to working with *ReadWriteOnce*, then please have a look at *restic*, *Velero*, and *Stash* instead of using the method described here.
+The backup method implemented in this repo uses `tar` to backup a folder within a user *Pod* by means of issuing `kubectl exec` from inside an ephemeral *Pod* that can deployed as part of a *CronJob*. It is particularly recommended to backup a *Persistent Volume* that cannot be mounted *ReadWriteMany* due to limitations with the *StorageClass* or *Storage Provisioner* in use.
+If you're not limited to working with *ReadWriteOnce*, then please have a look at *restic*, *Velero*, and *Stash*, instead of using the method described here.
 
 ## Example for backing up GeoServer's data folder
 
