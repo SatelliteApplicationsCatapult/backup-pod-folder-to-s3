@@ -20,7 +20,7 @@ spec:
             - /backup-folder.sh
             env:
             - name: DEBUG
-              value "echo"
+              value: "echo"
             - name: NAMESPACES
               value: "test-csvs,dev-csvs,stage-csvs"
             - name: SELECTOR
