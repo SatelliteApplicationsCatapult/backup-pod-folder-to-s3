@@ -1,4 +1,4 @@
-# Backup a folder from a Kubernetes Pod to an S3 bucket
+# Backup a folder within a Kubernetes Pod to an S3 bucket
 
 Docker image to backup a folder within a Kubernetes Pod to an S3 bucket.
 
