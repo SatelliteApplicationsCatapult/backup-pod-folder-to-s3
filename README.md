@@ -15,7 +15,7 @@ spec:
         spec:
           containers:
           - name: geoserver-config-backup
-            image: backup-pod-folder-to-s3
+            image: satapps/backup-pod-folder-to-s3
             args:
             - /backup-folder.sh
             env:
