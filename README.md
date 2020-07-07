@@ -40,7 +40,7 @@ spec:
             - name: DEBUG
               value: ""
             - name: NAMESPACES
-              value: "dev-csvs,stage-csvs"
+              value: "$NAMESPACES"
             - name: SELECTOR
               value: "app.kubernetes.io/name=geoserver"
             - name: BACKUP_FOLDER
