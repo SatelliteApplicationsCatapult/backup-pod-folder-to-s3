@@ -2,7 +2,24 @@
 
 ## Example for backing up GeoServer's data folder
 
-```yaml
+```bash
+NAMESPACES=dev-csvs,stage-csvs
+
+OIFS=$IFS
+IFS=','
+for ns in ${NAMESPACES}
+do
+    kubectl create role pod-reader --verb=get --verb=list --verb=watch --resource=pods --namespace=${ns}
+    kubectl create rolebinding ${ns}-pod-reader --role=pod-reader --serviceaccount=default:default --namespace=${ns}
+    kubectl create role pod-exec --verb=create --resource=pods/exec --namespace=${ns}
+    kubectl create rolebinding ${ns}-pod-exec --role=pod-exec --serviceaccount=default:default --namespace=${ns}
+done
+
+IFS=$OIFS
+```
+
+```bash
+cat >geoserver-config-backup.yaml <<EOF
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -39,4 +56,7 @@ spec:
             - name: AWS_SECRET_ACCESS_KEY
               value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYINVALIDKEY"
           restartPolicy: OnFailure
+EOF
+
+kubectl apply -f geoserver-config-backup.yaml
 ```
