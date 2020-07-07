@@ -15,7 +15,7 @@ spec:
         spec:
           containers:
           - name: geoserver-config-backup
-            image: backup-folder
+            image: backup-pod-folder-to-s3
             args:
             - /backup-folder.sh
             env:
@@ -34,14 +34,8 @@ spec:
             - name: AWS_ENDPOINT_URL
               value: "http://s3-uk-1.sa-catapult.co.uk"
             - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "ard-campaign.fullname" . }}
-                  key: aws_access_key_id
+              value: "AKIAIOSFODNN7INVALID"
             - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: {{ include "ard-campaign.fullname" . }}
-                  key: aws_secret_access_key
+              value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYINVALIDKEY"
           restartPolicy: OnFailure
 ```
