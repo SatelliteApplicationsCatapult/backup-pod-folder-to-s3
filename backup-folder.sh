@@ -44,8 +44,6 @@ if [ -z ${AWS_SECRET_ACCESS_KEY+x} ]; then
 fi
 
 
-KUBECONFIG=/.kube_config
-
 OIFS=$IFS
 IFS=','
 for ns in ${NAMESPACES}
