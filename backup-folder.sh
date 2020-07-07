@@ -9,7 +9,7 @@ fi
 
 if [ -z ${SELECTOR+x} ]; then
     echo "SELECTOR variable is not set"
-    echo "Set it to the selector to filter the pods that have folders to be backed up"
+    echo "Set it to the selector to filter the pod in which there's a folder to be backed up"
     exit 1
 fi
 
