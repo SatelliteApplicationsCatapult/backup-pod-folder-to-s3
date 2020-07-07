@@ -15,14 +15,14 @@ spec:
         spec:
           containers:
           - name: geoserver-config-backup
-            image: satapps/backup-pod-folder-to-s3
+            image: satapps/backup-pod-folder-to-s3:0.1.0
             args:
             - /backup-folder.sh
             env:
             - name: DEBUG
-              value: "echo"
+              value: ""
             - name: NAMESPACES
-              value: "test-csvs,dev-csvs,stage-csvs"
+              value: "dev-csvs,stage-csvs"
             - name: SELECTOR
               value: "app.kubernetes.io/name=geoserver"
             - name: BACKUP_FOLDER
