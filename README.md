@@ -24,7 +24,7 @@ IFS=$OIFS
 ```
 
 ```bash
-cat >geoserver-config-backup.yaml <<EOF
+cat <<EOF | kubectl apply -f -
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -62,6 +62,4 @@ spec:
               value: "wJalrXUtnFEMI/K7MDENG/bPxRfiCYINVALIDKEY"
           restartPolicy: OnFailure
 EOF
-
-kubectl apply -f geoserver-config-backup.yaml
 ```
