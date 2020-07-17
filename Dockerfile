@@ -10,6 +10,6 @@ RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.18.5/b
 
 RUN chmod u+x kubectl && mv kubectl /bin/kubectl
 
-ADD backup-folder.sh /usr/local/backup-folder.sh
+ADD backup-folder.sh /usr/local/bin/backup-folder.sh
 
 CMD ["sh"]
