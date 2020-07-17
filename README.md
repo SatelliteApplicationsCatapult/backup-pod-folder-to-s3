@@ -38,9 +38,9 @@ spec:
         spec:
           containers:
           - name: geoserver-config-backup
-            image: satapps/backup-pod-folder-to-s3:0.2.0
+            image: satapps/backup-pod-folder-to-s3:0.3.0
             args:
-            - /backup-folder.sh
+            - backup-folder.sh
             env:
             - name: DEBUG
               value: ""
@@ -48,6 +48,8 @@ spec:
               value: "$NAMESPACES"
             - name: SELECTOR
               value: "app.kubernetes.io/name=geoserver"
+            - name: CONTAINER
+              value: "geoserver"
             - name: BACKUP_FOLDER
               value: "/geoserver_data/data"
             - name: BACKUP_NAME_TEMPLATE
