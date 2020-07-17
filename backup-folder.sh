@@ -9,7 +9,13 @@ fi
 
 if [ -z ${SELECTOR+x} ]; then
     echo "SELECTOR variable is not set"
-    echo "Set it to the selector to filter the pod in which there's a folder to be backed up"
+    echo "Set it to the selector to filter the pod in which there's the container with a folder to be backed up"
+    exit 1
+fi
+
+if [ -z ${CONTAINER+x} ]; then
+    echo "CONTAINER variable is not set"
+    echo "Set it to the container in which there's a folder to be backed up"
     exit 1
 fi
 
@@ -53,7 +59,7 @@ do
     echo "Pod: ${target_pod}"
     backup_file=/tmp/${ns}_${BACKUP_NAME_TEMPLATE}_$(date --utc +%FT%TZ).tgz
     echo "Backup file: ${backup_file}"
-    ${DEBUG} kubectl exec -n ${ns} ${target_pod} -- tar czf - ${BACKUP_FOLDER} > ${backup_file}
+    ${DEBUG} kubectl exec -n ${ns} ${target_pod} -c ${CONTAINER} -- tar czf - ${BACKUP_FOLDER} > ${backup_file}
     if [ -z ${AWS_ENDPOINT_URL+x} ]; then
         ${DEBUG} aws s3 cp ${backup_file} s3://${AWS_DESTINATION_BUCKET}
     else
